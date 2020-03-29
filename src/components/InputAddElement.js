@@ -57,7 +57,7 @@ const ButtonDelete = styled(ButtonAdd)`
   }
 `;
 
-const InputAddElement = ({ nameObject, setNameObject, setListObject }) => {
+const InputAddElement = ({ setNameObject, setListObject }) => {
   const handleSubmit = evt => {
     evt.preventDefault();
     setNameObject(evt.target.username.value);
