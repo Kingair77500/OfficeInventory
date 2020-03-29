@@ -6,7 +6,7 @@ import DisplayElement from "./DisplayElement";
 
 const ListComponents = styled.div``;
 
-const Title = styled.h1`
+const Title = styled.h2`
   margin-top: ${rem(10)};
   font-size: ${rem(25)};
 `;
