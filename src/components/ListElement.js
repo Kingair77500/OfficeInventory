@@ -45,8 +45,10 @@ const ListElement = ({ listObject, setListObject }) => {
         </thead>
         {typeof listObject === "string" ? (
           <tbody>
-            <td></td>
-            <td>Votre liste objets est vide</td>
+            <tr>
+              <td></td>
+              <td>Votre liste objets est vide</td>
+            </tr>
           </tbody>
         ) : (
           <TableElement listObject={listObject} setListObject={setListObject} />
