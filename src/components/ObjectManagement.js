@@ -18,13 +18,16 @@ const ObjectManagement = () => {
   useEffect(() => {
     if (nameObject !== "") {
       if (typeof listObject !== "string") {
+        let i = 0;
         listObject.map((item, index) => {
           if (item.name.toLowerCase() === nameObject.toLowerCase()) {
             let newArray = [...listObject];
             newArray[index].number = newArray[index].number + 1;
             setListObject(newArray);
+            i++;
           } else {
-            setListObject([...listObject, { name: nameObject, number: 0 }]);
+            if (i === 0)
+              setListObject([...listObject, { name: nameObject, number: 0 }]);
           }
           return null;
         });
