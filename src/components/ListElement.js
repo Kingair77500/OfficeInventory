@@ -43,7 +43,9 @@ const ListElement = ({ listObject, setListObject }) => {
             <th>Supprimer</th>
           </tr>
         </thead>
-        {typeof listObject === "string" ? (
+        {console.log(listObject)}
+        {console.log(listObject.length)}
+        {listObject.length === 0 ? (
           <tbody>
             <tr>
               <td></td>

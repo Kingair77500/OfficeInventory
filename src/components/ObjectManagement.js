@@ -12,14 +12,14 @@ const ObjectManagementComponents = styled.div`
 const ObjectManagement = () => {
   const [nameObject, setNameObject] = useState("");
   const [listObject, setListObject] = useState(
-    JSON.parse(localStorage.getItem("listData")) || ""
+    JSON.parse(localStorage.getItem("listData")) || []
   );
 
   useEffect(() => {
     if (nameObject !== "") {
-      if (typeof listObject !== "string") {
+      if (listObject.length !== 0) {
         let i = 0;
-        listObject.map((item, index) => {
+        listObject.forEach((item, index) => {
           if (item.name.toLowerCase() === nameObject.toLowerCase()) {
             let newArray = [...listObject];
             newArray[index].number = newArray[index].number + 1;
@@ -27,11 +27,10 @@ const ObjectManagement = () => {
             i++;
           } else {
             if (i === 0)
-              setListObject([...listObject, { name: nameObject, number: 0 }]);
+              setListObject([...listObject, { name: nameObject, number: 1 }]);
           }
-          return null;
         });
-      } else setListObject([...listObject, { name: nameObject, number: 0 }]);
+      } else setListObject([...listObject, { name: nameObject, number: 1 }]);
     }
     localStorage.setItem("listData", JSON.stringify(listObject));
     setNameObject("");

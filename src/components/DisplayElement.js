@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import { rem } from "polished";
 import styled from "styled-components";
 import Button from "react-bootstrap/Button";
@@ -10,6 +10,15 @@ const Buttons = styled(Button)`
 
 const DisplayElement = memo(
   ({ name, number, index, listObject, setListObject }) => {
+    useEffect(() => {
+      if (number === 0) {
+        let newArrayDeleted = listObject.filter(
+          listObject => listObject.name !== name
+        );
+        setListObject(newArrayDeleted);
+      }
+    }, [number, listObject, name, setListObject]);
+
     const addNumber = evt => {
       evt.preventDefault();
       let newArray = [...listObject];
@@ -28,7 +37,7 @@ const DisplayElement = memo(
 
     const deleteInList = evt => {
       evt.preventDefault();
-      let newArrayDeleted = listObject.filter(
+      const newArrayDeleted = listObject.filter(
         listObject => listObject.name !== name
       );
       setListObject(newArrayDeleted);
@@ -39,12 +48,12 @@ const DisplayElement = memo(
         <td>{index}</td>
         <td>{name}</td>
         <td>
-          <Buttons variant="success" onClick={evt => addNumber(evt)}>
-            +
+          <Buttons variant="success" onClick={evt => deleteNumber(evt)}>
+            -
           </Buttons>
           {number}
-          <Buttons variant="warning" onClick={evt => deleteNumber(evt)}>
-            -
+          <Buttons variant="warning" onClick={evt => addNumber(evt)}>
+            +
           </Buttons>
         </td>
         <td>

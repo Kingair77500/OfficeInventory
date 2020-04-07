@@ -65,7 +65,7 @@ const InputAddElement = ({ setNameObject, setListObject }) => {
 
   const deleteAll = evt => {
     evt.preventDefault();
-    setListObject("");
+    setListObject([]);
   };
 
   return (
@@ -79,7 +79,7 @@ const InputAddElement = ({ setNameObject, setListObject }) => {
           <ButtonAdd>Ajouter</ButtonAdd>
         </WrapperAdd>
         <ButtonDelete variant="outline-danger" onClick={evt => deleteAll(evt)}>
-          Danger
+          Tout supprimer
         </ButtonDelete>
       </Wrapper>
     </FormAddElement>
